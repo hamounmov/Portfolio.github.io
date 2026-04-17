@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>George Smith | Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121932;
+      --panel-2: #1a2344;
+      --text: #eef2ff;
+      --muted: #b6c0e0;
+      --accent: #8fb4ff;
+      --accent-2: #c7d7ff;
+      --border: rgba(255,255,255,0.09);
+      --shadow: 0 20px 50px rgba(0,0,0,0.28);
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(143,180,255,0.18), transparent 28%),
+        radial-gradient(circle at top left, rgba(199,215,255,0.10), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 16, 32, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 36px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(143,180,255,0.12);
+      color: var(--accent-2);
+      font-size: 0.86rem;
+      margin-bottom: 18px;
+      border: 1px solid rgba(143,180,255,0.18);
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.1rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 64ch;
+      margin: 0 0 24px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1634;
+      border-color: transparent;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+    }
+
+    .hero-panel {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mini-title {
+      margin: 0 0 10px;
+      color: var(--accent-2);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 22px 0 10px;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 70ch;
+      margin-bottom: 22px;
+    }
+
+    .projects {
+      display: grid;
+      gap: 18px;
+    }
+
+    .project {
+      padding: 24px;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .project h3 {
+      margin: 0;
+      font-size: 1.18rem;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 14px 0 16px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .project p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
+    .project ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .project li + li { margin-top: 6px; }
+
+    .project-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .about {
+      padding: 24px;
+    }
+
+    .footer {
+      padding: 34px 0 52px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding-top: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">George Smith</div>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="card hero-copy">
+        <div class="eyebrow">Revenue Operations • Strategy &amp; Operations • Analytics</div>
+        <h1>Commercially minded analytics projects with a RevOps lens.</h1>
+        <p class="lead">
+          I build portfolio projects around pipeline performance, revenue predictability, and decision-making. My work combines SQL, business analysis, and dashboard thinking to surface insights that would actually matter to sales and operations teams.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn btn-secondary" href="https://github.com/your-github-username" target="_blank" rel="noreferrer">GitHub profile</a>
+          <a class="btn btn-secondary" href="CV-LINK-HERE" target="_blank" rel="noreferrer">CV</a>
+        </div>
+      </div>
+
+      <aside class="card hero-panel">
+        <div>
+          <p class="mini-title">Current focus</p>
+          <p class="section-copy" style="margin:0; max-width:none;">
+            SQL-first business analysis projects, followed by stakeholder-friendly dashboards in Looker or Tableau.
+          </p>
+        </div>
+        <div class="stat-grid">
+          <div class="stat">
+            <strong>8,800+</strong>
+            <span>sales opportunities analysed</span>
+          </div>
+          <div class="stat">
+            <strong>3</strong>
+            <span>core tables joined</span>
+          </div>
+          <div class="stat">
+            <strong>SQL</strong>
+            <span>analysis and metric logic</span>
+          </div>
+          <div class="stat">
+            <strong>Looker</strong>
+            <span>next dashboard layer</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="projects">
+      <h2>Projects</h2>
+      <p class="section-copy">
+        These projects are designed to show not just query-writing, but how I structure analysis, test hypotheses, and turn messy commercial data into decisions.
+      </p>
+
+      <div class="projects">
+        <article class="card project">
+          <div class="project-top">
+            <div>
+              <h3>Sales Pipeline Analysis</h3>
+              <div class="tag-row">
+                <span class="tag">SQL</span>
+                <span class="tag">Tableau</span>
+                <span class="tag">RevOps</span>
+                <span class="tag">Business Analysis</span>
+              </div>
+            </div>
+          </div>
+          <p>
+            Analysed a SaaS sales pipeline to understand what drives uneven conversion and how revenue predictability can be improved. The project tested whether performance differences were driven by product, sector, manager, region, rep-level execution, or opportunity mix.
+          </p>
+          <ul>
+            <li>Calculated closed win rates, average deal value, time to close, and segment-level performance across products, sectors, and sales hierarchy.</li>
+            <li>Found that variation was more pronounced at the individual sales-agent level than across product, sector, manager, or region.</li>
+            <li>Built an expected revenue metric combining conversion and deal size, showing that win rate alone is an incomplete measure of commercial performance.</li>
+          </ul>
+          <div class="project-links">
+            <a href="PROJECT-REPO-LINK-HERE" target="_blank" rel="noreferrer">View GitHub repo</a>
+            <a href="SQL-FILE-LINK-HERE" target="_blank" rel="noreferrer">See SQL analysis</a>
+          </div>
+        </article>
+
+        <article class="card project">
+          <div class="project-top">
+            <div>
+              <h3>Sales Pipeline Dashboard</h3>
+              <div class="tag-row">
+                <span class="tag">Looker</span>
+                <span class="tag">Dashboard Design</span>
+                <span class="tag">Stakeholder Reporting</span>
+              </div>
+            </div>
+          </div>
+          <p>
+            Dashboard project built as the visual layer on top of the SQL analysis. The goal is to surface pipeline conversion, deal value, and revenue predictability in a stakeholder-friendly format suitable for RevOps and sales leadership.
+          </p>
+          <ul>
+            <li>Focuses on a clean executive view rather than a cluttered KPI dump.</li>
+            <li>Designed to show which segments and reps most affect forecast confidence.</li>
+            <li>Built as a separate project to learn Looker properly while keeping the SQL repo focused on analysis.</li>
+          </ul>
+          <div class="project-links">
+            <a href="LOOKER-PROJECT-LINK-HERE" target="_blank" rel="noreferrer">Dashboard project</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="card about">
+        <p>
+          I’m interested in roles at the intersection of commercial strategy, operations, and analytics. My background is in SaaS go-to-market, and I’m using portfolio projects to deepen my SQL and BI skills while staying grounded in real business questions.
+        </p>
+        <p>
+          The kind of work I enjoy most is taking a vague business problem, breaking it into measurable questions, and building something clear enough that a manager could actually act on it.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="section-copy">
+        Best place to see more of my work is GitHub. You can also link your CV, LinkedIn, or email here once you’re ready to publish this.
+      </p>
+      <div class="card about">
+        <p><strong>GitHub:</strong> <a href="https://github.com/hamounmov" target="_blank" rel="noreferrer">github.com/hamounmov</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/hmovassagian/" target="_blank" rel="noreferrer">https://www.linkedin.com/in/hmovassagian/</a></p>
+        <p><strong>CV:</strong> <a href="CV-LINK-HERE" target="_blank" rel="noreferrer">Add your CV link</a></p>
+        <p class="note">Replace the placeholder links before publishing.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Built as a simple single-file portfolio page for GitHub Pages.
+    </footer>
+  </main>
+</body>
+</html>
